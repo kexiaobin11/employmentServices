@@ -1,0 +1,33 @@
+.job-listing {
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.job-listing h5 {
+  margin: 0;
+}
+.job-listing p {
+  margin: 0.5rem 0 0;
+}
+
+.job-listing:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+.badge {
+  background-color: #007bff;
+  color: white;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+}

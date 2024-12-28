@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-3">
+    <h2 class="section-title">最新职位</h2>
+  </div>
+  <div class="col-7 mt-2">
+    <a routerLink="job">
+      <p class="text-right">更多...</p>
+    </a>
+  </div>
+</div>
+<div class="row">
+  @for (job of jobs; track job.id) {
+    <div class="job-listing col-5 mr-3">
+      <h5 class="job-title">{{job.name}}</h5>
+      <p class="badge badge-warning">{{job.minMonthSalary}}-{{job.maxMonthSalary}}</p>
+      <p class="company-name">{{job.company.name}}</p>
+      <p >{{job.requirement}}</p>
+    </div>
+  }
+</div>
+

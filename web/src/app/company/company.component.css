@@ -1,0 +1,37 @@
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.job-listing {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.job-listing:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.company-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.job-listing p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.job-listing p strong {
+  color: #007bff;
+}
