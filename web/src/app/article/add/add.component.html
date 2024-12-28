@@ -1,0 +1,58 @@
+<div class="card mt-5 shadow-lg border-0">
+  <!-- 标题栏 -->
+  <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center">
+    <button class="btn btn-outline-light btn-sm" (click)="onClose()">
+    </button>
+  </div>
+
+  <!-- 表单主体 -->
+  <div class="card-body p-4">
+    <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+      <!-- 标题 -->
+      <div class="form-group mb-4">
+        <label class="font-weight-bold text-secondary"><code>*</code> 标题</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          formControlName="title"
+          placeholder="请输入文章标题">
+      </div>
+
+      <!-- 描述 -->
+      <div class="form-group mb-4">
+        <label class="font-weight-bold text-secondary"><code>*</code> 描述</label>
+        <textarea
+          class="form-control form-control-lg"
+          rows="3"
+          formControlName="description"
+          placeholder="请输入文章简要描述"></textarea>
+      </div>
+
+      <!-- 内容 -->
+      <div class="form-group">
+        <label class="font-weight-bold text-secondary"><code>*</code> 内容</label>
+        <div class="editor-container border border-info rounded-lg p-3">
+          <app-editor formControlName="content"></app-editor>
+        </div>
+      </div>
+
+      <!-- 分隔线 -->
+      <hr class="my-4" />
+
+      <!-- 操作按钮 -->
+      <div class="d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg mr-3"
+          (click)="onClose()">
+          <i class="bi bi-x-lg"></i> 关闭
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success btn-lg">
+          <i class="bi bi-check-circle"></i> 确定
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

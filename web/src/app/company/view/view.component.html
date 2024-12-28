@@ -1,0 +1,91 @@
+<div class="container mt-5 shadow-lg bg-light p-5 rounded-3">
+  <!-- 公司标题 -->
+  <div class="mb-4 text-center">
+    <h1 class="font-weight-bold text-primary">
+      {{ company.name }}
+    </h1>
+    <p class="text-secondary small mt-2">
+      <i class="bi bi-briefcase"></i> {{ company.category }} | {{ company.scale }}
+    </p>
+  </div>
+  <!-- 分隔线 -->
+  <hr class="mb-5" style="border-top: 2px solid #dee2e6;">
+  <div class="mb-4">
+    <h5 class="text-secondary font-weight-bold mb-3">
+      <i class="bi bi-info-circle text-primary"></i> 公司简介
+    </h5>
+    <p class="text-justify bg-light p-3 rounded shadow-sm" style="line-height: 1.8; font-size: 1rem;">
+      {{ company.description }}
+    </p>
+  </div>
+
+  <!-- 公司地址与联系方式 -->
+  <div class="mb-4">
+    <h5 class="text-secondary font-weight-bold mb-3 d-flex align-items-center">
+      <i class="bi bi-info-circle text-primary me-2" style="font-size: 1.5rem;"></i>
+      <span class="text-gradient">公司简介</span>
+    </h5>
+    <p class="text-justify bg-light p-3 rounded shadow-sm"
+       style="line-height: 1.8; font-size: 1rem; background: linear-gradient(to right, #f0f8ff, #e6f7ff);">
+      {{ company.description }}
+    </p>
+  </div>
+
+  <!-- 公司地址与联系方式 -->
+  <div class="mb-4">
+    <h5 class="text-secondary font-weight-bold mb-3 d-flex align-items-center">
+      <i class="bi bi-telephone-inbound text-primary me-2" style="font-size: 1.5rem;"></i>
+      <span class="text-gradient">联系方式</span>
+    </h5>
+    <ul class="list-unstyled p-3 rounded shadow-sm"
+        style="background: linear-gradient(to right, #fefefe, #f9f9f9); border-left: 4px solid #007bff;">
+      <li class="mb-3 d-flex align-items-center">
+        <i class="bi bi-geo-alt text-danger me-3" style="font-size: 1.3rem;"></i>
+        <span><strong>地址:</strong> {{ company.address }}</span>
+      </li>
+      <li class="mb-3 d-flex align-items-center">
+        <i class="bi bi-telephone text-success me-3" style="font-size: 1.3rem;"></i>
+        <span><strong>电话:</strong> {{ company.contactPhone }}</span>
+      </li>
+      <li class="d-flex align-items-center">
+        <i class="bi bi-envelope text-primary me-3" style="font-size: 1.3rem;"></i>
+        <span><strong>邮箱:</strong> {{ company.email }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 分隔线 -->
+  <hr class="mb-5" style="border-top: 3px solid #007bff;">
+
+  <!-- 公司介绍 -->
+  <div class="mb-5">
+    <h4 class="text-secondary font-weight-bold mb-4 d-flex align-items-center"
+        style="font-size: 1.8rem;">
+      <i class="bi bi-building text-primary me-3" style="font-size: 2rem;"></i>
+      <span class="text-gradient">公司介绍</span>
+    </h4>
+    <div
+      [innerHTML]="company.introduction"
+      class="content-body text-justify p-5 rounded shadow-sm"
+      style="
+      line-height: 2;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      margin-top: 20px;
+    ">
+    </div>
+  </div>
+
+  <!-- 分隔线 -->
+  <hr class="mb-4" style="border-top: 2px solid #dee2e6;">
+
+  <!-- 返回按钮 -->
+  <div class="col-12 text-right">
+    <button
+      type="button"
+      class="btn btn-primary btn-lg px-5 py-2 shadow-sm"
+      (click)="onBack()">
+      <i class="bi bi-arrow-left"></i> 返回
+    </button>
+  </div>
+</div>

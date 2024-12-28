@@ -1,0 +1,13 @@
+<div class="news-section">
+  <div class="row">
+    <div class="news-title col-6">资讯动态</div>
+    <div class="col-6 mt-2 text-right">
+      <a routerLink="article">更多</a>
+    </div>
+  </div>
+  <ul>
+    @for (article of articles; track article.id) {
+      <li><a target="_blank">{{article.title}}</a></li>
+    }
+  </ul>
+</div>
