@@ -49,8 +49,9 @@ export class EditComponent implements OnInit {
     const article: Article = this.formGroup.value;
     this.articleService.update(this.article.id, article).subscribe({
       next: () => {
-        this.commonService.success();
-        this.router.navigate(['../'], {relativeTo: this.route});
+        this.commonService.success(() => {
+          this.onClose();
+        });
       }
     });
   }

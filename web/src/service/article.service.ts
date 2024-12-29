@@ -20,7 +20,7 @@ export class ArticleService {
     return this.httpClient.get<Article[]>('/article/getAll');
   }
 
-  page(param: { size: number; page: number; title: string }) {
+  page(param: { size: number; page: number; title?: string }) {
     return this.httpClient.get<Page<Article>>('/article/page', {params: param})
   }
 
@@ -33,7 +33,11 @@ export class ArticleService {
     return this.httpClient.get<Article>(`/article/${id}`);
   }
 
-  update(id: number, article: Article) {
+  update(id: number, article: { title: string, content: string, description: string }) {
     return this.httpClient.put(`/article/${id}`, article);
+  }
+
+  updateHits(id: number): Observable<Article> {
+    return this.httpClient.put<Article>(`/article/updateHits/${id}`, null);
   }
 }

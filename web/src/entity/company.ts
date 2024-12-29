@@ -12,6 +12,7 @@ export interface Company {
   email: string;
   // 行业类别
   category: string;
+
   scale: string;
   // 公司介绍
   introduction: string;

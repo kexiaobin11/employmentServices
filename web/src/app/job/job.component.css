@@ -3,6 +3,7 @@
   border-radius: 0.25rem;
   padding: 1rem;
   margin-bottom: 1rem;
+  cursor: pointer; /* 鼠标悬停时变成手形 */
 }
 .job-listing h5 {
   margin: 0;

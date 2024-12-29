@@ -10,7 +10,7 @@
 </div>
 <div class="row">
   @for (job of jobs; track job.id) {
-    <div class="job-listing col-5 mr-3">
+    <div class="job-listing col-5 mr-3" routerLink="/job/view/{{job.id}}">
       <h5 class="job-title">{{job.name}}</h5>
       <p class="badge badge-warning">{{job.minMonthSalary}}-{{job.maxMonthSalary}}</p>
       <p class="company-name">{{job.company.name}}</p>

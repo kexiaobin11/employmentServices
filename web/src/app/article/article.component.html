@@ -7,7 +7,7 @@
   </div>
   <ul>
     @for (article of articles; track article.id) {
-      <li><a target="_blank">{{article.title}}</a></li>
+      <li><a routerLink="article/view/{{article.id}}">{{article.title}}</a></li>
     }
   </ul>
 </div>

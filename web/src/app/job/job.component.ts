@@ -1,13 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {Job} from '../../entity/job';
 import {JobService} from '../../service/job.service';
-import {RouterLink} from '@angular/router';
+import {NavigationEnd, Router, RouterLink} from '@angular/router';
+import {DataRowOutlet} from '@angular/cdk/table';
 
 @Component({
   selector: 'app-job',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    DataRowOutlet
   ],
   templateUrl: './job.component.html',
   styleUrl: './job.component.css'
@@ -15,7 +17,9 @@ import {RouterLink} from '@angular/router';
 export class JobComponent implements OnInit {
   jobs: Job[];
 
-  constructor(private jobService: JobService) {
+  constructor(private jobService: JobService,
+              private router: Router,
+              private elementRef: ElementRef) {
   }
 
   ngOnInit(): void {

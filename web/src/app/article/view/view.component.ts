@@ -17,6 +17,7 @@ import {DatePipe} from '@angular/common';
 })
 export class ViewComponent implements OnInit {
   article: Article;
+
   constructor(private articleService: ArticleService,
               private router: Router,
               private route: ActivatedRoute,
@@ -26,13 +27,13 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.pipe(filter(p => typeof p['id'] !== 'undefined'), map(p => +p['id']))
       .subscribe(id => {
-        this.articleService.getById(id).subscribe(value => {
+        this.articleService.updateHits(id).subscribe(value => {
           this.article = value;
         });
       });
   }
 
   onBack() {
-    this.router.navigate(['../../'], {relativeTo: this.route});
+    window.history.back();
   }
 }

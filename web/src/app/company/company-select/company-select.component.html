@@ -1,0 +1,8 @@
+<div>
+  <nz-select  nzShowSearch  nzAllowClear nzPlaceHolder="企业名" [formControl]="companySelect"
+              [compareWith]="compareFn"  >
+    <nz-option nzCustomContent *ngFor="let company of companies" [nzLabel]="company.name" [nzValue]="company">
+      {{company.name}}
+    </nz-option>
+  </nz-select>
+</div>

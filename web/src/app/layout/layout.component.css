@@ -1,0 +1,47 @@
+/* 确保 HTML 和 Body 占满屏幕高度 */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* 外层容器，使用 flexbox 布局 */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 高度至少填满整个屏幕 */
+}
+
+/* 主内容区域 */
+.container {
+  flex: 1; /* 主内容区域扩展，占据剩余空间 */
+  padding: 20px; /* 可根据需要调整内容的内边距 */
+}
+
+/* 页脚样式 */
+.footer {
+  background-color: #343a40; /* 深灰色背景 */
+  color: white; /* 白色文本 */
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* 页脚中的链接样式 */
+.footer a {
+  color: white; /* 白色链接文本 */
+  margin: 0 10px;
+  text-decoration: none; /* 去掉下划线 */
+}
+
+.footer a:hover {
+  text-decoration: underline; /* 悬停时显示下划线 */
+}
+
+/* 页脚中的段落样式 */
+.footer p {
+  margin: 5px 0;
+}
+
+/* 页脚版权区域的样式 */
+.footer .copyright {
+  margin-top: 10px;
+}

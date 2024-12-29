@@ -1,39 +1,40 @@
-<nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
-    <a class="navbar-brand" href="./index.html"><strong>科技园就业服务</strong></a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02"
-            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand text-white" href="#"><i class="fa fa-graduation-cap fa-lg mr-2"></i>科技园就业服务</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse" aria-controls="nvbCollapse">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="navbar-collapse collapse" id="navbarColor02">
-      <ul class="navbar-nav mr-auto d-flex align-items-center">
-        <li class="nav-item">
-          <a class="nav-link" href="./index.html">首页 <span class="sr-only">(current)</span></a>
+    <div class="collapse navbar-collapse" id="nvbCollapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngFor="let menu of menus">
+          <a class="nav-link"
+             [routerLink]="menu.url"
+             routerLinkActive="active-link"
+             [routerLinkActiveOptions]="{ exact: true }">
+            <i class="fa" [ngClass]="menu.icon"></i> {{ menu.name }}
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./job-list.html">招聘信息</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./company-list.html">企业信息</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./career-guidance.html">职业指导</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./about.html">关于我们</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./contact.html">联系我们</a>
-        </li>
-      </ul>
-      <!-- 右侧导航菜单 -->
-      <ul class="navbar-nav ml-auto d-flex align-items-center">
-        <li class="nav-item highlight">
-          <a class="nav-link btn btn-primary text-white" href="./register.html">注册</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link btn btn-outline-primary" href="./login.html">登录</a>
-        </li>
+        <!-- 如果用户未登录，显示管理登录按钮 -->
+        @if (!user) {
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/login'" routerLinkActive="active-link">
+              <i class="fa fa-sign-in-alt mr-2"></i> 管理用户登录
+            </a>
+          </li>
+        }
+
+        @if (user) {
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/user'" routerLinkActive="active-link">
+              <i class="fa fa-user mr-2"></i> 欢迎您，{{ user.username }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="logout()">
+              <i class="fa fa-sign-out-alt mr-2"></i> 退出登录
+            </a>
+          </li>
+        }
       </ul>
     </div>
   </div>
