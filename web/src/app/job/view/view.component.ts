@@ -13,7 +13,6 @@ import {filter, map} from 'rxjs';
 })
 export class ViewComponent implements OnInit {
   job: Job;
-  previousUrl: string;
 
   constructor(private jobService: JobService,
               private router: Router,
@@ -21,9 +20,6 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.previousUrl = params['from'] || null;
-    });
 
     this.route.params.pipe(filter(p => typeof p['id'] !== 'undefined'), map(p => +p['id']))
       .subscribe(id => {
@@ -34,10 +30,6 @@ export class ViewComponent implements OnInit {
   }
 
   onBack() {
-    if (this.previousUrl) {
-      this.router.navigateByUrl(this.previousUrl);
-    } else {
-      this.router.navigate(['../../']); // 默认返回
-    }
+    window.history.back();
   }
 }

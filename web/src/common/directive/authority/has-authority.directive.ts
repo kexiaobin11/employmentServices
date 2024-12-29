@@ -1,6 +1,6 @@
 import {Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
 import {UserService} from "../../../service/user.service";
-import {Subject, takeUntil} from "rxjs";
+import {filter, pipe, Subject, takeUntil} from "rxjs";
 
 /**
  * 权限指令
@@ -21,8 +21,8 @@ export class HasAuthorityDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const hasView = this.viewContainer.length;
-    this.userService.select$(UserService.currentUser).pipe(takeUntil(this.ngUserSubject$)).subscribe(v => {
-      if (hasView === 0 && v.role === this.authority) {
+    this.userService.select$(UserService.currentUser).pipe(filter(v => !!v), takeUntil(this.ngUserSubject$)).subscribe(v => {
+      if (hasView === 0 && v?.role === this?.authority) {
         this.viewContainer.createEmbeddedView(this.templateRef);
       } else if (hasView > 0 && v.role !== this.authority) {
         this.viewContainer.clear();

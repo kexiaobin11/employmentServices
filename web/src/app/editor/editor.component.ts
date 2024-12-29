@@ -75,8 +75,12 @@ export class EditorComponent implements OnDestroy, OnInit, ControlValueAccessor 
       plugins: [
         'advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
-        `insertdatetime media table paste code help wordcount ${EditorService.keys.yzImageTip}`
+        'insertdatetime media table paste code help wordcount codesample',
       ],
+      toolbar:
+        `undo redo | formatselect | bold italic ${EditorService.keys.yzImageTip} | ` +
+        'alignleft aligncenter alignright alignjustify  | ' +
+        'bullist numlist outdent indent | removeformat | help ｜codesample code | help',
       // 文件上传拦截器
       images_upload_handler: (blobInfo: any, success: any, failure: any): void => {
         this.attachmentService.upload(blobInfo.blob())
@@ -89,11 +93,6 @@ export class EditorComponent implements OnDestroy, OnInit, ControlValueAccessor 
             failure('上传图片异常: ' + response.error);
           });
       },
-      toolbar:
-        `undo redo | formatselect | bold italic ${EditorService.keys.yzImageTip} | ` +
-        'alignleft aligncenter alignright alignjustify  | ' +
-        'bullist numlist outdent indent | removeformat | help ｜codesample code | help',
-      // 允许拖拽图片
       paste_data_images: true,
     };
   }

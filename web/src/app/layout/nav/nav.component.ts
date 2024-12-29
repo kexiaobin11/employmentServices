@@ -28,7 +28,7 @@ export class NavComponent extends BaseComponent implements OnInit {
       icon: 'fas fa-tachometer-alt',
     },
     {
-      name: '就业文章',
+      name: '就业指导',
       url: 'article',
       icon: 'fas fa-building',
     },

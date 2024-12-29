@@ -17,7 +17,6 @@ import {DatePipe} from '@angular/common';
 })
 export class ViewComponent implements OnInit {
   article: Article;
-  previousUrl: string;
 
   constructor(private articleService: ArticleService,
               private router: Router,
@@ -35,6 +34,6 @@ export class ViewComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['../../'], {relativeTo: this.route}); // 默认返回
+    window.history.back();
   }
 }

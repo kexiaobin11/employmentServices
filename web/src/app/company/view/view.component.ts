@@ -35,10 +35,6 @@ export class ViewComponent implements OnInit {
   }
 
   onBack() {
-    if (this.previousUrl) {
-      this.router.navigateByUrl(this.previousUrl);
-    } else {
-      this.router.navigate(['../../']); // 默认返回
-    }
+    window.history.back();
   }
 }
