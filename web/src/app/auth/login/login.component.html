@@ -1,0 +1,26 @@
+<!-- login.component.html -->
+<div class="body-login">
+  <div class="container" id="container">
+    <div class="form-container sign-in-container">
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <h3>科技园就业服务系统</h3>
+        <div class="color-line mb-3"></div>
+        <input type="text" formControlName="username" placeholder="用户名" required />
+        <input type="password" formControlName="password" placeholder="密码" required />
+        <button type="submit" class="mt-1" [disabled]="loginForm.invalid">登录</button>
+        @if (errorInfo) {
+          <hr>
+          <small class="text-danger">{{ errorInfo }}</small>
+        }
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1 class="mt-2"></h1>
+          <img src="assets/images/login.png" height="259" width="302" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

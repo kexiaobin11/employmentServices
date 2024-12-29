@@ -13,6 +13,7 @@ import {Page, YzPageModule} from '@yunzhi/ng-common';
 import {environment} from '../../../environments/environment';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
+import {HasAuthorityDirective} from '../../../common/directive/authority/has-authority.directive';
 
 @Component({
   selector: 'app-index',
@@ -23,7 +24,8 @@ import {RouterLink} from '@angular/router';
     DatePipe,
     YzPageModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    HasAuthorityDirective
   ],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
@@ -45,12 +47,10 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.title.valueChanges.subscribe(v => {
       this.param.title = v;
+      this.reload();
     });
 
     this.reload();
-    this.articleService.all().subscribe(v => {
-      this.articles = v;
-    })
   }
 
   onChangePage(page: number) {

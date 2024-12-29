@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import {LayoutComponent} from './layout/layout.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ARTICLE_ROUTERS} from './article/article-routers';
+import {LoginComponent} from './auth/login/login.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
         loadChildren: () => import('./company/company.routes').then(m => m.COMPANY_ROUTES)
       }
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   }
 ];

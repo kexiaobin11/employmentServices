@@ -10,6 +10,8 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {ApiPrefixAndMergeMapInterceptor, XAuthTokenInterceptor} from '@yunzhi/ng-common';
+import {environment} from '../environments/environment';
 
 registerLocaleData(zh);
 
@@ -20,10 +22,21 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptorsFromDi()
     ),
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   multi: true,
+    //   useClass: MockApiInterceptor.forRoot(MockApis)
+    // },
     {
       provide: HTTP_INTERCEPTORS,
-      multi: true,
-      useClass: MockApiInterceptor.forRoot(MockApis)
-    }, provideNzI18n(zh_CN), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(),
+      useClass: ApiPrefixAndMergeMapInterceptor.forRoot({api: environment.apiUrl}),
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: XAuthTokenInterceptor,
+      multi: true
+    },
+    provideNzI18n(zh_CN), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(),
   ]
 };

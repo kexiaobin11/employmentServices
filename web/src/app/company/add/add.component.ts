@@ -4,14 +4,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Company} from '../../../entity/company';
 import {CompanyService} from '../../../service/company.service';
 import {CommonService} from '../../../service/common.service';
-import {EditorComponent} from '@tinymce/tinymce-angular';
+import {EditorComponent} from '../../editor/editor.component';
 
 @Component({
   selector: 'app-add',
   standalone: true,
   imports: [
     EditorComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './add.component.html',
   styleUrl: './add.component.css'

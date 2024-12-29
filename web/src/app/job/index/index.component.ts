@@ -4,20 +4,23 @@ import {Job} from '../../../entity/job';
 import {Page, YzPageModule} from '@yunzhi/ng-common';
 import {environment} from '../../../environments/environment';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {RouterLink} from '@angular/router';
+import {HasAuthorityDirective} from "../../../common/directive/authority/has-authority.directive";
 
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [
-    YzPageModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        YzPageModule,
+        ReactiveFormsModule,
+        RouterLink,
+        HasAuthorityDirective
+    ],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
 export class IndexComponent implements OnInit {
   pageData: Page<Job>;
-  jobs: Job[] = [];
 
   name = new FormControl<string>('');
   param = {
@@ -30,13 +33,10 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.reload();
     this.name.valueChanges.subscribe(v => {
       this.param.name = v;
-    });
-    this.reload();
-
-    this.jobService.all().subscribe(jobs => {
-      this.jobs = jobs;
+      this.reload();
     });
   }
 

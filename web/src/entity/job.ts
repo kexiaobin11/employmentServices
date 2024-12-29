@@ -9,4 +9,5 @@ export interface Job {
   maxMonthSalary: string;
   salaryDetail: string;
   company: Company;
+  description: string;
 }

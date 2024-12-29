@@ -6,7 +6,6 @@ import {CompanyService} from '../../../service/company.service';
 import {CommonService} from '../../../service/common.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {filter, map} from 'rxjs';
-import {companies} from '../../../api/company-api';
 
 @Component({
   selector: 'app-edit',

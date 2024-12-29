@@ -15,6 +15,7 @@ import {filter, map} from 'rxjs';
 })
 export class ViewComponent implements OnInit {
   company: Company;
+  previousUrl: string;
 
   constructor(private companyService: CompanyService,
               private router: Router,
@@ -22,6 +23,9 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.previousUrl = params['from'] || null;
+    });
     this.route.params.pipe(filter(p => typeof p['id'] !== 'undefined'), map(p => +p['id']))
       .subscribe(id => {
         this.companyService.getById(id).subscribe(value => {
@@ -31,6 +35,10 @@ export class ViewComponent implements OnInit {
   }
 
   onBack() {
-    this.router.navigate(['../../'], {relativeTo: this.route});
+    if (this.previousUrl) {
+      this.router.navigateByUrl(this.previousUrl);
+    } else {
+      this.router.navigate(['../../']); // 默认返回
+    }
   }
 }

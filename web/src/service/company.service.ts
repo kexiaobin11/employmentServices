@@ -22,7 +22,7 @@ export class CompanyService {
     return this.httpClient.get<Company[]>('/company/getAll');
   }
 
-  page(param: { size: number; name: string; page: number }) {
+  page(param: { size: number; page: number, name?: string; }): Observable<Page<Company>> {
     return this.httpClient.get<Page<Company>>('/company/page',{params: param})
   }
 
@@ -37,6 +37,6 @@ export class CompanyService {
 
   update(id: number, company: {name: string; description: string; address: string; contactPhone: string; email: string; category: string, scale: string, introduction: string}) {
     company = company as Company;
-    return this.httpClient.post<Company>(`/company/${id}`,company);
+    return this.httpClient.put<Company>(`/company/${id}`,company);
   }
 }

@@ -10,7 +10,7 @@
 </div>
 <div class="row">
   @for (company of companies; track company.id) {
-    <div class="job-listing col-5 mr-3">
+    <div class="job-listing col-5 mr-3" routerLink="/company/view/{{company.id}}">
       <h5 class="company-name">{{company.name}}</h5>
       <p>行业：{{company.category}}</p>
       <p>地址：{{company.address}}</p>

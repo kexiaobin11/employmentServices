@@ -1,5 +1,5 @@
 import {ApiInjector, MockApiInterface} from '@yunzhi/ng-mock-api';
-import {companies} from './company-api';
+import {companies, companyList} from './company-api';
 import {Job} from '../entity/job';
 import {Company} from '../entity/company';
 
@@ -12,9 +12,27 @@ export const jobList: Job[] = [
     minMonthSalary: '¥15,000',
     maxMonthSalary: '¥22,000',
     salaryDetail: '根据个人能力及经验调整薪资，享受年终奖',
-    company: {
-      name: 'ABC科技有限公司'
-    } as Company
+    company: companyList[0],
+    description: `
+    <h3>职位描述：</h3>
+    <ul>
+      <li>负责公司前端技术开发与维护，参与产品需求评审与技术评估。</li>
+      <li>使用主流前端框架（React 或 Vue）开发高质量的用户界面。</li>
+      <li>与后端工程师紧密合作，完成接口联调并优化交互体验。</li>
+      <li>研究前沿技术，并能将适合的技术应用于实际项目中。</li>
+    </ul>
+    <h3>任职要求：</h3>
+    <ul>
+      <li>三年以上前端开发经验，能独立承担前端模块的开发与维护。</li>
+      <li>熟悉 HTML、CSS、JavaScript，具备扎实的前端开发基础。</li>
+      <li>熟练掌握 React 或 Vue 框架，有大型项目经验优先。</li>
+      <li>了解前端构建工具（如 Webpack、Vite 等），能优化前端性能。</li>
+      <li>具备良好的沟通能力和团队合作精神。</li>
+    </ul>
+    <h3>薪资福利：</h3>
+    <p>薪资范围 ¥15,000 - ¥22,000，具体视个人能力与经验而定。享受绩效奖金、年终奖，以及完善的五险一金。</p>
+    <p>此外，公司提供丰富的员工活动和培训机会，帮助员工不断成长。</p>
+  `,
   },
   {
     id: '2',
@@ -124,7 +142,7 @@ export const jobList: Job[] = [
       name: '云计算公司'
     } as Company
   }
-];
+] as Job[];
 
 const jobs: Job[] = [
   {
@@ -167,8 +185,9 @@ const jobs: Job[] = [
     salaryDetail: "基本工资+销售提成+年终奖",
     company: companies[3] // 阿里巴巴集团
   }
-];
-export class JobApi implements MockApiInterface{
+] as Job[];
+
+export class JobApi implements MockApiInterface {
   getInjectors(): ApiInjector[] {
     return [
       {
@@ -180,7 +199,12 @@ export class JobApi implements MockApiInterface{
         method: 'GET',
         url: '/job/getAll',
         result: jobList
-      }
+      },
+      {
+        method: 'GET',
+        url: '/job/:id',
+        result: jobList[0]
+      },
     ];
   }
 }

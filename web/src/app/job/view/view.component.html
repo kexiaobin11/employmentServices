@@ -1,0 +1,74 @@
+<div class="container mt-5 shadow-lg bg-light p-5 rounded-3">
+  <!-- 职位标题 -->
+  <div class="mb-4 text-center">
+    <h1 class="font-weight-bold text-primary">
+      {{ job.name }}
+    </h1>
+    <p class="text-secondary small mt-2">
+      <i class="bi bi-geo-alt"></i> 工作地点: {{ job.workPlace }}
+    </p>
+  </div>
+
+  <!-- 公司信息 -->
+  <div class="mb-5">
+    <h4 class="text-secondary font-weight-bold mb-4 d-flex align-items-center"
+        style="font-size: 1.8rem;">
+      <i class="bi bi-building text-primary me-3" style="font-size: 2rem;"></i>
+      <span>公司信息</span>
+    </h4>
+    <ul class="list-unstyled bg-light p-3 rounded shadow-sm">
+      <li>
+        <strong>公司名称:</strong> {{ job.company.name }}
+      </li>
+      <li>
+        <strong>公司简介:</strong>{{job.company.description}}<span></span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 薪资信息 -->
+  <div class="mb-4">
+    <h5 class="text-secondary font-weight-bold mb-3 d-flex align-items-center">
+      <i class="bi bi-cash-coin text-success me-2" style="font-size: 1.5rem;"></i>
+      <span>薪资详情</span>
+    </h5>
+    <ul class="list-unstyled p-3 rounded shadow-sm"
+        style="background: linear-gradient(to right, #fefefe, #f9f9f9); border-left: 4px solid #007bff;">
+      <li class="mb-3 d-flex align-items-center">
+        <strong>最低月薪:</strong> {{ job.minMonthSalary }}
+      </li>
+      <li class="mb-3 d-flex align-items-center">
+        <strong>最高月薪:</strong> {{ job.maxMonthSalary }}
+      </li>
+      <li class="d-flex align-items-center">
+        <strong>薪资详情:</strong> {{ job.salaryDetail }}
+      </li>
+    </ul>
+  </div>
+  <!-- 分隔线 -->
+  <hr class="mb-5" style="border-top: 2px solid #dee2e6;">
+
+  <!-- 职位描述 -->
+  <div class="mb-4">
+    <h5 class="text-secondary font-weight-bold mb-3">
+      <i class="bi bi-info-circle text-primary"></i> 职位描述
+    </h5>
+    <div [innerHTML]="job.description"
+         class="text-justify bg-light p-3 rounded shadow-sm"
+         style="line-height: 1.8; font-size: 1rem;">
+    </div>
+  </div>
+
+  <!-- 分隔线 -->
+  <hr class="mb-4" style="border-top: 2px solid #dee2e6;">
+
+  <!-- 返回按钮 -->
+  <div class="col-12 text-right">
+    <button
+      type="button"
+      class="btn btn-primary btn-lg px-5 py-2 shadow-sm"
+      (click)="onBack()">
+      <i class="bi bi-arrow-left"></i> 返回
+    </button>
+  </div>
+</div>

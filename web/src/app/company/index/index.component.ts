@@ -8,6 +8,7 @@ import {environment} from '../../../environments/environment';
 import {JobService} from '../../../service/job.service';
 import {companies} from '../../../api/company-api';
 import {RouterLink} from '@angular/router';
+import {HasAuthorityDirective} from '../../../common/directive/authority/has-authority.directive';
 
 @Component({
   selector: 'app-index',
@@ -15,14 +16,15 @@ import {RouterLink} from '@angular/router';
   imports: [
     YzPageModule,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HasAuthorityDirective
   ],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
 export class IndexComponent implements OnInit {
   pageData: Page<Company>;
-  companies: Company[] = [] as Company[];
+  // companies: Company[] = [] as Company[];
 
   name = new FormControl<string>('');
   param = {
@@ -37,12 +39,9 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.name.valueChanges.subscribe(v => {
       this.param.name = v;
+      this.reload();
     });
     this.reload();
-
-    this.companyService.all().subscribe(companies => {
-      this.companies = companies;
-    });
   }
 
   onChangePage(page: number) {
