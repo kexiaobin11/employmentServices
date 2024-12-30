@@ -48,19 +48,26 @@ public class ArticleController {
     @PutMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
     public Article update(@PathVariable Long id, @RequestBody ArticleDto.UpdateRequest request) {
-        return articleService.update(id, request);
+        return this.articleService.update(id, request);
     }
 
     @PutMapping("/updateHits/{id}")
     public Article updateHits(@PathVariable Long id) {
-        return articleService.updateHits(id);
+        return this.articleService.updateHits(id);
     }
 
     @GetMapping("/getAll")
     @JsonView(GetAllJsonView.class)
     public List<Article> getAll() {
-        return articleService.getAll();
+        return this.articleService.getAll();
     }
 
-    interface GetAllJsonView {}
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public void delete(@PathVariable Long id) {
+        this.articleService.delete(id);
+    }
+
+    interface GetAllJsonView {
+    }
 }

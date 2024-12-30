@@ -22,4 +22,6 @@ public interface CompanyService {
     Company update(Long id, CompanyDto.UpdateRequest request);
 
     List<Company> getAll();
+
+    void delete(Long id);
 }

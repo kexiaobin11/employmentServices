@@ -65,4 +65,9 @@ public class ArticleServiceImpl implements ArticleService {
         article.setHits(article.getHits() + 1);
         return this.articleRepository.save(article);
     }
+
+    @Override
+    public void delete(Long id) {
+        this.articleRepository.deleteById(id);
+    }
 }

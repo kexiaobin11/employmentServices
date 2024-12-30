@@ -26,33 +26,39 @@ public class CompanyController {
 
     @GetMapping("/{id}")
     public Company getById(@PathVariable Long id) {
-        return companyService.getById(id);
+        return this.companyService.getById(id);
     }
 
     @GetMapping("/getTo4Company")
     public List<Company> getTop4Company() {
-        return companyService.getTo4Company();
+        return this.companyService.getTo4Company();
     }
 
     @GetMapping("/page")
     public Page<Company> page(@SortDefault.SortDefaults(@SortDefault(sort = "id", direction = Sort.Direction.DESC)) Pageable pageable, @RequestParam(required = false) String name) {
-        return companyService.page(pageable, name);
+        return this.companyService.page(pageable, name);
     }
 
     @PostMapping
     @PreAuthorize("hasAnyRole('ADMIN')")
     public Company save(@RequestBody CompanyDto.SaveRequest request) {
-        return companyService.save(request);
+        return this.companyService.save(request);
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN')")
     public Company update(@PathVariable Long id, @RequestBody CompanyDto.UpdateRequest request) {
-        return companyService.update(id, request);
+        return this.companyService.update(id, request);
     }
 
     @GetMapping("/getAll")
     public List<Company> getAll() {
-        return companyService.getAll();
+        return this.companyService.getAll();
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public void delete(@PathVariable Long id) {
+        this.companyService.delete(id);
     }
 }

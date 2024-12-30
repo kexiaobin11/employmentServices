@@ -72,4 +72,9 @@ public class JobServiceImpl implements JobService {
     public List<Job> getAll() {
         return (List<Job>) this.jobRepository.findAll();
     }
+
+    @Override
+    public void delete(Long id) {
+        this.jobRepository.deleteById(id);
+    }
 }

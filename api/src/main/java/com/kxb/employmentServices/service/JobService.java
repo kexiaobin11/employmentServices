@@ -22,4 +22,6 @@ public interface JobService {
     Job update(Long id, JobDto.UpdateRequest request);
 
     List<Job> getAll();
+
+    void delete(Long id);
 }
