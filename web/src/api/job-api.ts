@@ -5,7 +5,7 @@ import {Company} from '../entity/company';
 
 export const jobList: Job[] = [
   {
-    id: '1',
+    id: 5,
     name: '前端开发工程师',
     workPlace: '北京市',
     requirement: '3年以上前端开发经验，熟悉React/Vue，掌握HTML、CSS、JavaScript',
@@ -35,7 +35,7 @@ export const jobList: Job[] = [
   `,
   },
   {
-    id: '2',
+    id: 5,
     name: '产品经理',
     workPlace: '上海市',
     requirement: '3年以上产品经理经验，具备较强的沟通协调能力，能独立负责产品规划',
@@ -47,7 +47,7 @@ export const jobList: Job[] = [
     } as Company
   },
   {
-    id: '3',
+    id: 5,
     name: '数据分析师',
     workPlace: '深圳市',
     requirement: '2年以上数据分析经验，熟悉Python、SQL，具有较强的分析能力',
@@ -59,7 +59,7 @@ export const jobList: Job[] = [
     } as Company
   },
   {
-    id: '4',
+    id: 5,
     name: '后端开发工程师',
     workPlace: '广州市',
     requirement: '2年以上Java开发经验，熟悉Spring Boot，数据库优化经验',
@@ -71,7 +71,7 @@ export const jobList: Job[] = [
     } as Company
   },
   {
-    id: '5',
+    id: 5,
     name: 'UI/UX设计师',
     workPlace: '北京市',
     requirement: '3年以上UI/UX设计经验，熟悉设计工具如Sketch、Figma，良好的设计理念',
@@ -83,7 +83,7 @@ export const jobList: Job[] = [
     } as Company
   },
   {
-    id: '6',
+    id: 5,
     name: 'Java开发工程师',
     workPlace: '南京市',
     requirement: '3年以上Java开发经验，熟悉Spring框架，能够独立完成系统架构设计',
@@ -95,7 +95,7 @@ export const jobList: Job[] = [
     } as Company
   },
   {
-    id: '7',
+    id: 5,
     name: '销售经理',
     workPlace: '上海市',
     requirement: '5年以上销售经验，具有团队管理能力，优秀的客户沟通能力',
@@ -107,7 +107,7 @@ export const jobList: Job[] = [
     } as Company
   },
   {
-    id: '8',
+    id: 4,
     name: '移动端开发工程师',
     workPlace: '成都市',
     requirement: '2年以上iOS或Android开发经验，熟悉React Native或Flutter',
@@ -119,7 +119,7 @@ export const jobList: Job[] = [
     } as Company
   },
   {
-    id: '9',
+    id: 3,
     name: '人力资源经理',
     workPlace: '天津市',
     requirement: '3年以上HR管理经验，熟悉招聘、员工关系管理，良好的沟通能力',
@@ -131,7 +131,7 @@ export const jobList: Job[] = [
     } as Company
   },
   {
-    id: '10',
+    id: 2,
     name: '网络安全工程师',
     workPlace: '重庆市',
     requirement: '3年以上网络安全经验，熟悉防火墙、IDS/IPS、防病毒等技术',
@@ -146,7 +146,7 @@ export const jobList: Job[] = [
 
 const jobs: Job[] = [
   {
-    id: "j001",
+    id: 1,
     name: "人工智能研究员",
     workPlace: "深圳",
     requirement: "硕士及以上学历，3年以上AI领域研究经验。",

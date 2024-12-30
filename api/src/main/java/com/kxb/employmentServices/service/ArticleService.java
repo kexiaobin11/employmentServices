@@ -22,4 +22,6 @@ public interface ArticleService {
     List<Article> getAll();
 
     Article updateHits(Long id);
+
+    void delete(Long id);
 }

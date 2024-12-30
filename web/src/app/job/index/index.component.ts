@@ -6,6 +6,7 @@ import {environment} from '../../../environments/environment';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {HasAuthorityDirective} from "../../../common/directive/authority/has-authority.directive";
+import {CommonService} from '../../../service/common.service';
 
 @Component({
   selector: 'app-index',
@@ -29,7 +30,8 @@ export class IndexComponent implements OnInit {
     name: '',
   };
 
-  constructor(private jobService: JobService) {
+  constructor(private jobService: JobService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
@@ -48,6 +50,14 @@ export class IndexComponent implements OnInit {
   reload() {
     this.jobService.page(this.param).subscribe(v => {
       this.pageData = v;
+    })
+  }
+
+  onDelete(id: number) {
+    this.jobService.delete(id).subscribe(() => {
+      this.commonService.success(() => {
+        this.reload();
+      })
     })
   }
 }

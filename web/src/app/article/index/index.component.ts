@@ -14,6 +14,7 @@ import {environment} from '../../../environments/environment';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {HasAuthorityDirective} from '../../../common/directive/authority/has-authority.directive';
+import {CommonService} from '../../../service/common.service';
 
 @Component({
   selector: 'app-index',
@@ -41,7 +42,8 @@ export class IndexComponent implements OnInit {
     title: '',
   };
 
-  constructor(private articleService: ArticleService) {
+  constructor(private articleService: ArticleService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
@@ -49,7 +51,6 @@ export class IndexComponent implements OnInit {
       this.param.title = v;
       this.reload();
     });
-
     this.reload();
   }
 
@@ -60,6 +61,14 @@ export class IndexComponent implements OnInit {
   reload() {
     this.articleService.page(this.param).subscribe(v => {
       this.pageData = v;
+    })
+  }
+
+  onDelete(id: number) {
+    this.articleService.delete(id).subscribe(() => {
+      this.commonService.success(() => {
+        this.reload();
+      })
     })
   }
 }

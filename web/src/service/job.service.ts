@@ -33,7 +33,20 @@ export class JobService {
     return this.httpClient.get<Job>(`/job/${id}`);
   }
 
-  update(id: string, job: {name: string; workPlace: string; requirement: string; minMonthSalary: string; maxMonthSalary: string; salaryDetail: string; company: Company; description: string;}) {
+  update(id: number, job: {
+    name: string;
+    workPlace: string;
+    requirement: string;
+    minMonthSalary: string;
+    maxMonthSalary: string;
+    salaryDetail: string;
+    company: Company;
+    description: string
+  }) {
     return this.httpClient.put<Job>(`/job/${id}`,job);
+  }
+
+  delete(id: number) {
+    return this.httpClient.delete(`/job/${id}`);
   }
 }

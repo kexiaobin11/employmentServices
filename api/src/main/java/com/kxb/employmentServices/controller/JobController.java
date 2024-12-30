@@ -54,4 +54,10 @@ public class JobController {
     public List<Job> getAll() {
         return jobService.getAll();
     }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public void delete(@PathVariable Long id) {
+        this.jobService.delete(id);
+    }
 }

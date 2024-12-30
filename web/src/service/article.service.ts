@@ -40,4 +40,8 @@ export class ArticleService {
   updateHits(id: number): Observable<Article> {
     return this.httpClient.put<Article>(`/article/updateHits/${id}`, null);
   }
+
+  delete(id: number) {
+    return this.httpClient.delete(`/article/${id}`);
+  }
 }
