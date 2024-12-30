@@ -1,7 +1,7 @@
 import {Company} from './company';
 
 export interface Job {
-  id: string;
+  id: number;
   name: string;
   workPlace: string;
   requirement: string;

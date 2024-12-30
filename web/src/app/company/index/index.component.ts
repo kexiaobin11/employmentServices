@@ -9,6 +9,7 @@ import {JobService} from '../../../service/job.service';
 import {companies} from '../../../api/company-api';
 import {RouterLink} from '@angular/router';
 import {HasAuthorityDirective} from '../../../common/directive/authority/has-authority.directive';
+import {CommonService} from '../../../service/common.service';
 
 @Component({
   selector: 'app-index',
@@ -33,7 +34,8 @@ export class IndexComponent implements OnInit {
     name: '',
   };
 
-  constructor(private companyService: CompanyService) {
+  constructor(private companyService: CompanyService,
+              private commonService: CommonService) {
   }
 
   ngOnInit(): void {
@@ -53,5 +55,13 @@ export class IndexComponent implements OnInit {
     this.companyService.page(this.param).subscribe(v => {
       this.pageData = v;
     })
+  }
+
+  onDelete(id: number) {
+    this.companyService.delete(id).subscribe(() => {
+      this.commonService.success(() => {
+        this.reload();
+      })
+    });
   }
 }

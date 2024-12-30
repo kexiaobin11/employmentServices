@@ -39,4 +39,8 @@ export class CompanyService {
     company = company as Company;
     return this.httpClient.put<Company>(`/company/${id}`,company);
   }
+
+  delete(id: number) {
+    return this.httpClient.delete(`/company/${id}`);
+  }
 }
